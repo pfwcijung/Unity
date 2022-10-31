@@ -5,14 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Bullet
-  - Portal
-  - AItem
+  - Goal
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
