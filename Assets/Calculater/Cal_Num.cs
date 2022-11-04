@@ -9,14 +9,14 @@ public class Cal_Num : MonoBehaviour
     int Num_1st = 0;
     int Num_2nd = 0;
     int Result = 0;
-    int Cal_how = 0;
+    int Cal_how = 4;
     bool Act_Num_1st = true;
     bool Act_Num_2nd = false;
     bool Act_setCal = true;
+    List<int> calList = new List<int>();
 
     public TMP_Text verText;
     public TMP_Text calcText;
-    public TMP_Text pastText;
     public List<Button> buttons = new List<Button>();
     public List<Button> calc = new List<Button>();
     public List<Button> opt = new List<Button>();
@@ -43,15 +43,26 @@ public class Cal_Num : MonoBehaviour
     }
     private void Update()
     {
-        if (Act_Num_1st)
+        string str = "_";
+        switch (Cal_how)
         {
-            verText.text = string.Format("Input 1st num : {0}", Num_1st);
+            case 0:
+                str = "+";
+                break;
+            case 1:
+                str = "-";
+                break;
+            case 2:
+                str = "*";
+                break;
+            case 3:
+                str = "/";
+                break;
+            case 4:
+                str = " ";
+                break;
         }
-        else if (Act_Num_2nd)
-        {
-            verText.text = string.Format("Input 2nd num : {0}", Num_2nd);
-        }
-        ShowResult();
+        verText.text = string.Format("{0} {1} {2}", Num_1st, str,  Num_2nd);
     }
     public void setNum(int aNum)
     {
@@ -74,13 +85,13 @@ public class Cal_Num : MonoBehaviour
             Act_Num_2nd = true;
             Cal_how = aCal;
             Act_setCal = false;
+            calList.Add(Num_1st);
         }
         else if (!Act_setCal)
         {
             Calculate(Cal_how);
-            ShowResult();
-            ShowPastResult(Cal_how);
             int Ex_Num_1st = Result;
+            calList.Add(Num_2nd);
             Clear();
             Num_1st = Ex_Num_1st;
             Act_Num_1st = false;
@@ -94,12 +105,17 @@ public class Cal_Num : MonoBehaviour
         switch (aOpt)
         {
             case 0:
+                int aCal = Cal_how;
                 Calculate(Cal_how);
-                ShowPastResult(Cal_how);
+                int Ex_Num_1st = Result;
+                Clear();
+                Num_1st = Ex_Num_1st;
+                Act_Num_1st = false;
+                Act_Num_2nd = true;
+                Cal_how = aCal;
+                Act_setCal = false;
                 break;
             case 1:
-                Calculate(Cal_how);
-                ShowPastResult(Cal_how);
                 Clear();
                 break;
         }
@@ -121,35 +137,18 @@ public class Cal_Num : MonoBehaviour
                 Result = Num_1st / Num_2nd;
                 break;
         }
+        ShowResult();
     }
     void ShowResult()
     {
         calcText.text = string.Format("Result : {0}", Result);
-    }
-    void ShowPastResult(int aCal)
-    {
-        switch (aCal)
-        {
-            case 0:
-                pastText.text = string.Format("{0} + {1} = {2}", Num_1st, Num_2nd, Result);
-                break;
-            case 1:
-                pastText.text = string.Format("{0} - {1} = {2}", Num_1st, Num_2nd, Result);
-                break;
-            case 2:
-                pastText.text = string.Format("{0} * {1} = {2}", Num_1st, Num_2nd, Result);
-                break;
-            case 3:
-                pastText.text = string.Format("{0} / {1} = {2}", Num_1st, Num_2nd, Result);
-                break;
-        }
     }
     void Clear()
     {
         Num_1st = 0;
         Num_2nd = 0;
         Result = 0;
-        Cal_how = 0;
+        Cal_how = 4;
         Act_Num_1st = true;
         Act_Num_2nd = false;
     }
