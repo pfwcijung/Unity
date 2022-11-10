@@ -359,8 +359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473bd40f293ace14083e5a8795177fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputField_1st: {fileID: 1873616772}
-  inputField_2nd: {fileID: 2093463581}
+  inputField:
+  - {fileID: 1873616772}
+  - {fileID: 2093463581}
   ResultText: {fileID: 1372716366}
 --- !u!4 &674517438
 Transform:

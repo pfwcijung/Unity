@@ -7,9 +7,7 @@ using TMPro;
 public class InputFieldStudy : MonoBehaviour
 {
     [SerializeField]
-    private TMP_InputField inputField_1st;
-    [SerializeField]
-    private TMP_InputField inputField_2nd;
+    private TMP_InputField[] inputField;
     [SerializeField]
     private TMP_Text ResultText;
 
@@ -25,19 +23,15 @@ public class InputFieldStudy : MonoBehaviour
     }
     public void onSelect_1st()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Debug.Log("tab");
-            inputField_2nd.ActivateInputField();
-        }
+
     }
     public void OnValueChangeEnd_1st()
     {
-        num1st = int.Parse(inputField_1st.text);
+        num1st = int.Parse(inputField[0].text);
     }
     public void OnValueChangeEnd_2nd()
     {
-        num2nd = int.Parse(inputField_2nd.text);
+        num2nd = int.Parse(inputField[1].text);
     }
     public void onClick()
     {
