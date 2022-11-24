@@ -36,20 +36,21 @@ public class AIReportStudy : MonoBehaviour
     float StudyTimeHour = 0;
     float StudyTimeMinute = 0;
 
-    float Date = 75;
+    int Date = 75;
     float ActiveCount = 20;
 
     float avgJipJung = 75;
-    float curJipJung = 150;
+    float curJipJung = 100;
 
     // Start is called before the first frame update
     void Start()
     {
+        Date = Random.Range(50, 100);
         PercentTodo.fillAmount = curTodo / maxTodo;
         PercentCorrect.fillAmount = curCorrect / maxCorrect;
         StudyTimeCal();
-        float x1 = curJipJung - avgJipJung;
-        obj.transform.position = new Vector3(200f + x1, 40f, 0f);
+        float x1 = avgJipJung - curJipJung;
+        obj.transform.rotation = Quaternion.Euler(0, 0, x1);
     }
 
     // Update is called once per frame

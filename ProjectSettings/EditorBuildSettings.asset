@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Dragon.unity
-    guid: cd47ca12b51c61047889a4e57795b0f0
+    path: Assets/5.SceneChange/Lobby.unity
+    guid: eb8cbdaeff238894ba939c759c34eab9
+  - enabled: 1
+    path: Assets/5.SceneChange/Game.unity
+    guid: 746ef5fb6efc30d468ee1d3a47e8cf7b
+  - enabled: 1
+    path: Assets/5.SceneChange/End.unity
+    guid: e13d4c978d2ee884fbeda3ec52cff72f
   m_configObjects: {}
